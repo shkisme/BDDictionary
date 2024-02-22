@@ -1,8 +1,8 @@
 package bdd.view;
 
-import bdd.domain.MemberSelectType;
 import bdd.dto.SignInRequestDto;
 import bdd.dto.SignUpRequestDto;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.function.Supplier;
 
@@ -11,12 +11,16 @@ public class DictionaryConsoleView implements DictionaryView {
   private static final Scanner scanner = new Scanner(System.in);
 
   @Override
+  public void printHelloMessage() {
+    System.out.println("안녕하세요! BDDictionary 입니다.");
+  }
+
+  @Override
   public MemberSelectType readMemberSelectType() {
-    System.out.println("안녕하세요! BDDictionary 입니다. 어떤 회원으로 이용하시겠어요?");
+    System.out.println("어떤 회원으로 이용하시겠어요?");
     System.out.println();
-    System.out.println("1. 비회원");
-    System.out.println("2. BDD 회원");
-    System.out.println("3. 회원 가입");
+    Arrays.stream(MemberSelectType.values())
+        .forEach(System.out::println);
     return tryGetUserInput(() -> {
       int number = Integer.parseInt(scanner.nextLine());
       return MemberSelectType.from(number);
@@ -26,6 +30,7 @@ public class DictionaryConsoleView implements DictionaryView {
   @Override
   public SignInRequestDto readSignInRequest() {
     System.out.println("-로그인-");
+    System.out.println();
     System.out.println("ID를 입력해주세요.");
     String loginId = tryGetUserInput(scanner::nextLine);
     System.out.println("PW를 입력해주세요.");
@@ -36,6 +41,7 @@ public class DictionaryConsoleView implements DictionaryView {
   @Override
   public SignUpRequestDto readSignUpRequest() {
     System.out.println("-회원가입-");
+    System.out.println();
     System.out.println("ID를 입력해주세요.");
     String loginId = tryGetUserInput(scanner::nextLine);
     System.out.println("PW를 입력해주세요.");
@@ -50,7 +56,19 @@ public class DictionaryConsoleView implements DictionaryView {
     return new SignUpRequestDto(loginId, password);
   }
 
-  private <T> T tryGetUserInput(Supplier<T> inputFunction) {
+  @Override
+  public DictionarySelectType readDictionaryType() {
+    System.out.println("이용하실 기능을 선택해주세요.");
+    System.out.println();
+    Arrays.stream(DictionarySelectType.values())
+        .forEach(System.out::println);
+    return tryGetUserInput(() -> {
+      int number = Integer.parseInt(scanner.nextLine());
+      return DictionarySelectType.from(number);
+    });
+  }
+
+  private static <T> T tryGetUserInput(Supplier<T> inputFunction) {
     while (true) {
       try {
         return inputFunction.get();

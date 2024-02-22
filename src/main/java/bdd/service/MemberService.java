@@ -1,7 +1,7 @@
 package bdd.service;
 
-import bdd.domain.Member;
-import bdd.domain.dao.MemberRepository;
+import bdd.domain.member.Member;
+import bdd.domain.member.dao.MemberRepository;
 import java.util.Optional;
 
 public class MemberService {
@@ -14,17 +14,17 @@ public class MemberService {
 
   public void login(String loginId, String password) {
     Member member = memberRepository.findByLoginId(loginId)
-        .orElseThrow(IllegalArgumentException::new);
-    if (!member.isMatch(password)) {
-      throw new IllegalArgumentException("비밀번호 불일치");
+        .orElseThrow(() -> new IllegalArgumentException("회원을 찾을 수 없습니다."));
+    if (!member.isSamePassword(password)) {
+      throw new IllegalArgumentException("비밀번호가 불일치합니다.");
     }
   }
 
   public void create(String loginId, String password) {
     Optional<Member> existingMember = memberRepository.findByLoginId(loginId);
     if (existingMember.isPresent()) {
-      throw new RuntimeException("Member with loginId " + loginId + " already exists");
+      throw new IllegalArgumentException("Member with loginId " + loginId + " already exists");
     }
-    // TODO : 회원 저장
+    memberRepository.save(new Member(loginId, password));
   }
 }
