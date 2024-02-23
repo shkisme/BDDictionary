@@ -1,5 +1,6 @@
 package bdd.domain;
 
+import bdd.domain.dao.Language;
 import java.util.ArrayList;
 import java.util.List;
 

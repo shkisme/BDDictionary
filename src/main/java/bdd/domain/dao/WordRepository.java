@@ -11,4 +11,6 @@ public interface WordRepository {
   Optional<Word> findByWord(String word);
 
   List<Word> findAll();
+
+  Optional<Word> findByWordAndLanguage(String word, Language language);
 }

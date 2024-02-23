@@ -1,6 +1,6 @@
 package bdd.view;
 
-import bdd.domain.Language;
+import bdd.domain.dao.Language;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.function.Supplier;
@@ -35,8 +35,6 @@ public class DictionaryConsoleView implements DictionaryView {
 
   @Override
   public Language readLanguageType() {
-    System.out.println("대응하는 (혹은 찾으실) 언어를 선택해주세요.");
-    System.out.println();
     Arrays.stream(Language.values())
         .forEach(System.out::println);
     return tryGetUserInput(() -> {

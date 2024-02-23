@@ -1,6 +1,6 @@
 package bdd.view;
 
-import bdd.domain.Language;
+import bdd.domain.dao.Language;
 
 public interface DictionaryView {
 

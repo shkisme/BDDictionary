@@ -11,7 +11,7 @@ public class BDDictionary extends Dictionary {
 
   @Override
   protected void validateWord(String wordName) {
-    if (!Pattern.matches("^([Bb비])[Dd디]{2}$", wordName)) {
+    if (!Pattern.matches("^([B|b|비])[Dd디]{2}$", wordName)) {
       throw new IllegalArgumentException("BDD 단어를 입력해주세요.");
     }
   }

@@ -6,6 +6,7 @@ public enum SelectType {
   REGISTRATION(1, "단어 등록하기"),
   SEARCH(2, "단어 검색하기"),
   FIND_ALL(3, "등록된 모든 단어 조회하기"),
+  EXIT(4, "종료"),
   ;
 
   private final int index;

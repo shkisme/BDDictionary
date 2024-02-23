@@ -1,5 +1,7 @@
 package bdd.domain;
 
+import bdd.domain.dao.Language;
+
 public class Mean {
 
   private Language language;

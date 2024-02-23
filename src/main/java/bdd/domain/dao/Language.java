@@ -1,4 +1,4 @@
-package bdd.domain;
+package bdd.domain.dao;
 
 import java.util.Arrays;
 

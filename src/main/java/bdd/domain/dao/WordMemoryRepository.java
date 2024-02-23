@@ -23,4 +23,11 @@ public class WordMemoryRepository implements WordRepository {
   public List<Word> findAll() {
     return words;
   }
+
+  @Override
+  public Optional<Word> findByWordAndLanguage(String word, Language language) {
+    return this.words.stream()
+        .filter(w -> w.isMatch(word) && w.existLanguage(language))
+        .findFirst();
+  }
 }

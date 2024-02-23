@@ -1,6 +1,6 @@
 package bdd.service;
 
-import bdd.domain.Language;
+import bdd.domain.dao.Language;
 
 public class DictionaryService {
 

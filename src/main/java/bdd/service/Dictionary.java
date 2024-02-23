@@ -1,6 +1,6 @@
 package bdd.service;
 
-import bdd.domain.Language;
+import bdd.domain.dao.Language;
 import bdd.domain.Word;
 import bdd.domain.dao.WordRepository;
 import java.util.Optional;
@@ -15,11 +15,9 @@ public abstract class Dictionary {
 
   protected void create(String wordName, String meanName, Language language) {
     validateDuplicate(wordName, language);
-    validateWord(wordName);
+    validateWord(meanName);
     Word word = new Word(wordName, language, meanName);
-    Word opponentWord = new Word(meanName, language, wordName);
     wordRepository.save(word);
-    wordRepository.save(opponentWord);
   }
 
   protected void validateDuplicate(String word, Language language) {
@@ -32,10 +30,10 @@ public abstract class Dictionary {
     }
   }
 
-  protected abstract void validateWord(String wordName);
+  protected abstract void validateWord(String meanName);
 
   protected String convert(String word, Language language) {
-    Word findWord = wordRepository.findByWord(word)
+    Word findWord = wordRepository.findByWordAndLanguage(word, language)
         .orElseThrow(() -> new IllegalArgumentException("%s 언어로 등록된 %s 단어는 없습니다.".formatted(language, word)));
     return findWord.convert(language);
   }
