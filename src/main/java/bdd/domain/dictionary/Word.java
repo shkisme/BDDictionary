@@ -1,16 +1,22 @@
 package bdd.domain.dictionary;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
+@Entity
 public class Word {
 
-  private final String key;
+  @Id
+  @GeneratedValue
+  private Long id;
 
-  private final String value;
+  private String value;
 
-  private final WordType wordType;
-
-  public Word(String key, String value, WordType wordType) {
-    this.key = key;
+  public Word(String value) {
     this.value = value;
-    this.wordType = wordType;
+  }
+
+  protected Word() {
   }
 }

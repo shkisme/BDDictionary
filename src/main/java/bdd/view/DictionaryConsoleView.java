@@ -11,11 +11,6 @@ public class DictionaryConsoleView implements DictionaryView {
   private static final Scanner scanner = new Scanner(System.in);
 
   @Override
-  public void printHelloMessage() {
-    System.out.println("안녕하세요! BDDictionary 입니다.");
-  }
-
-  @Override
   public MemberSelectType readMemberSelectType() {
     System.out.println("어떤 회원으로 이용하시겠어요?");
     System.out.println();
@@ -66,6 +61,11 @@ public class DictionaryConsoleView implements DictionaryView {
       int number = Integer.parseInt(scanner.nextLine());
       return DictionarySelectType.from(number);
     });
+  }
+
+  @Override
+  public void printMessage(String message) {
+    System.out.println(message);
   }
 
   private static <T> T tryGetUserInput(Supplier<T> inputFunction) {

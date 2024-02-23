@@ -28,6 +28,10 @@ public enum DictionarySelectType {
     return this.index == number;
   }
 
+  public String getName() {
+    return name;
+  }
+
   @Override
   public String toString() {
     return "%d. %s".formatted(index, name);

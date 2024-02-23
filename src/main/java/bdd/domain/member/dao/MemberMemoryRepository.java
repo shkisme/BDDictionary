@@ -1,5 +1,7 @@
 package bdd.domain.member.dao;
 
+import static java.util.Collections.unmodifiableList;
+
 import bdd.domain.member.Member;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +19,13 @@ public class MemberMemoryRepository implements MemberRepository {
   }
 
   @Override
-  public void save(Member member) {
+  public Member save(Member member) {
     members.add(member);
+    return member;
+  }
+
+  @Override
+  public List<Member> findAll() {
+    return unmodifiableList(members);
   }
 }

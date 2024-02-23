@@ -1,4 +1,4 @@
-package bdd.domain.dictionary;
+package bdd.service;
 
 public interface Dictionary {
 

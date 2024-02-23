@@ -5,8 +5,6 @@ import bdd.dto.SignUpRequestDto;
 
 public interface DictionaryView {
 
-  void printHelloMessage();
-
   MemberSelectType readMemberSelectType();
 
   SignInRequestDto readSignInRequest();
@@ -14,4 +12,6 @@ public interface DictionaryView {
   SignUpRequestDto readSignUpRequest();
 
   DictionarySelectType readDictionaryType();
+
+  void printMessage(String message);
 }
