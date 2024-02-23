@@ -1,4 +1,4 @@
-package bdd.model;
+package demo;
 
 public class Application {
 
@@ -13,5 +13,10 @@ public class Application {
 
     // 단어 저장
     member.saveWord("apple", "사과", languages.chose("영어"), dictionary);
+
+    // 단어 조회
+    String result = member.search("apple", languages.chose("영어"), dictionary);
+
+    System.out.println(result);
   }
 }
