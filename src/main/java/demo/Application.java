@@ -12,7 +12,7 @@ public class Application {
     Dictionary dictionary = new Dictionary();
 
     // 단어 저장
-    member.saveWord("apple", "사과", languages.chose("영어"), dictionary);
+    member.save("apple", "사과", languages.chose("영어"), dictionary);
 
     // 단어 조회
     String result = member.search("apple", languages.chose("영어"), dictionary);

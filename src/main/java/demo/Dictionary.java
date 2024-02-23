@@ -25,7 +25,7 @@ public class Dictionary {
       return;
     }
     if (findWord.get().existLanguage(language)) {
-      throw new IllegalArgumentException("이미 해당 단어의 뜻이 %s로 존재합니다.".formatted(findWord.get().getMean(language)));
+      throw new IllegalArgumentException("이미 해당 단어의 뜻이 %s로 존재합니다.".formatted(findWord.get().convert(language)));
     }
   }
 

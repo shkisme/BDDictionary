@@ -1,4 +1,4 @@
-package demo;
+package bdd.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,5 +29,10 @@ public class Word {
         .findFirst()
         .orElseThrow(() -> new IllegalArgumentException("%s언어로 등록된 해당 단어는 없습니다.".formatted(language)));
     return mean.getName();
+  }
+
+  @Override
+  public String toString() {
+    return "단어 : " + name + " 뜻 : " + means;
   }
 }

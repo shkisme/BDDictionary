@@ -2,7 +2,7 @@ package demo;
 
 public class Member {
 
-  public void saveWord(String word, String mean, Language language, Dictionary dictionary) {
+  public void save(String word, String mean, Language language, Dictionary dictionary) {
     dictionary.create(word, mean, language);
   }
 
